@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Scanner;
 
 public class Main {
 
@@ -12,10 +13,12 @@ public class Main {
         //System.out.println(validatePIN("3451"));
         //System.out.println(generateINN());
         //System.out.println(generatePhoneNumber());
-        System.out.println(getCurrentDate());
-        System.out.println(getCurrentDate2());
-        System.out.println(getTimestamp());
-
+        //System.out.println(getCurrentDate());
+        //System.out.println(getCurrentDate2());
+        //System.out.println(getTimestamp());
+        Scanner sc = new Scanner(System.in);
+        String coordinates = sc.nextLine();
+        parseCoordinates(coordinates);
     }
 
     public static boolean validatePIN(String s) {
@@ -78,5 +81,11 @@ public class Main {
         result = 141 * Math.pow(Math.min(kreat/88.4/k, 1), alfa) * Math.pow(Math.max(kreat/88.4/k, 1), (-1.209))
                 * Math.pow(0.993, old) * y;
         return result;
+    }
+
+    public static void parseCoordinates(String coordinates) {
+        coordinates = coordinates.replaceAll("\\.", ",");
+        coordinates = coordinates.replaceAll("],\\[", "]\n[");
+        System.out.println(coordinates);
     }
 }
